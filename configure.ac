@@ -25,6 +25,8 @@ if test "x$enable_debug" = "xyes"; then
         CFLAGS="$CFLAGS -g -Wall"
 fi
 
+GOBJECT_INTROSPECTION_CHECK([0.6.4])
+
 GTK_DOC_CHECK([1.0])
 
 AC_OUTPUT([
