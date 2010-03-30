@@ -178,6 +178,11 @@ xml_util_get_long_attribute (xmlNode    *node,
         return atoll (content);
 }
 
+/**
+ * xml_util_set_child:
+ * 
+ * @namespace: (type libxml2.xmlNs) : Namespace
+ */
 void
 xml_util_set_child (xmlNode    *parent_node,
                     xmlNs      *namespace,
