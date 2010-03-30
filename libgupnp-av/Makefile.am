@@ -70,6 +70,25 @@ libgupnp_av_1_0_la_LIBADD = $(LIBGUPNP_LIBS)
 EXTRA_DIST = gupnp-av-marshal.list
 
 if HAVE_INTROSPECTION
+libgupnp_av_1_0_la_GIRSOURCES = gupnp-didl-lite-object.c \
+                             gupnp-didl-lite-item.c \
+                             gupnp-didl-lite-container.c \
+                             gupnp-didl-lite-parser.c \
+                             gupnp-didl-lite-resource.c \
+                             gupnp-didl-lite-descriptor.c \
+                             gupnp-didl-lite-contributor.c \
+                             gupnp-didl-lite-writer.c \
+                             gupnp-protocol-info.c \
+                             gupnp-search-criteria-parser.c \
+                             gupnp-last-change-parser.c \
+                             gupnp-dlna.c \
+                             gupnp-av-error.c \
+                             xml-util.c \
+                             xml-util.h \
+                             gvalue-util.c \
+                             gvalue-util.h \
+                             $(BUILT_SOURCES)
+
 
 GUPnPAV-1.0.gir: libgupnp-av-1.0.la $(INTROSPECTION_SCANNER)
 	$(AM_V_GEN) \
@@ -86,11 +105,13 @@ GUPnPAV-1.0.gir: libgupnp-av-1.0.la $(INTROSPECTION_SCANNER)
  	    --include=GUPnP-1.0 \
             --pkg libxml-2.0 \
 	    --pkg gobject-2.0 \
+	    --pkg gupnp-1.0 \
 	    --pkg gssdp-1.0 \
 	    --pkg libsoup-2.4 \
 	    -I$(top_srcdir) \
-	    $(libgupnp_av_1_0_la_HEADERS) \
-	    $(libgupnp_av_1_0_la_SOURCES)
+            $(libgupnp_av_inc_HEADERS) \
+            $(libgupnp_av_1_0_la_GIRSOURCES)
+
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = GUPnPAV-1.0.gir
